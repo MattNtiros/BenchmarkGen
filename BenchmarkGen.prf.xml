@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties PUBLIC "-//JTRS//DTD SCA V2.2.2 PRF//EN" "properties.dtd">
+<properties>
+  <simple id="packet_size" mode="readwrite" type="ulong" complex="false">
+    <description>The size of the packets being pushed out</description>
+    <value>1000</value>
+    <kind kindtype="configure"/>
+    <action type="external"/>
+  </simple>
+  <simple id="stream_id" mode="readwrite" type="string" complex="false">
+    <description>The stream id accociated with the packets pushed out</description>
+    <value>BenchmarkGen stream</value>
+    <kind kindtype="configure"/>
+    <action type="external"/>
+  </simple>
+  <struct id="SRI" mode="readwrite">
+    <simple id="mode" type="boolean" complex="false">
+      <description>Set to true to output complex data</description>
+      <value>false</value>
+    </simple>
+    <simple id="xdelta" type="double" complex="false">
+      <value>1.0</value>
+    </simple>
+    <simple id="subsize" type="ulong" complex="false">
+      <value>0</value>
+    </simple>
+    <configurationkind kindtype="configure"/>
+  </struct>
+  <simple id="avg_output_rate" mode="readonly" type="double" complex="false">
+    <description>The average output rate in samples per second
+Equal to (packet_size*packets_per_time_avg)/time</description>
+    <value>0</value>
+    <kind kindtype="configure"/>
+    <action type="external"/>
+  </simple>
+  <simple id="packets_per_time_avg" mode="readwrite" type="ulong" complex="false">
+    <description>The amount of packets to send out before calculating the average output rate.</description>
+    <value>30</value>
+    <kind kindtype="configure"/>
+    <action type="external"/>
+  </simple>
+  <simple id="time" mode="readonly" type="double" complex="false">
+    <description>Shows the time it took for x amount of packets being pushed out.
+x being equal to packets_per_time_avg</description>
+    <value>0</value>
+    <kind kindtype="configure"/>
+    <action type="external"/>
+  </simple>
+  <simple id="totalPackets" mode="readonly" type="ulong" complex="false">
+    <description>This will show the total # of packets sent out while running.
+This will only reset to zero if the packet_size or packets_per_time_avg changes.</description>
+    <value>0</value>
+    <kind kindtype="configure"/>
+    <action type="external"/>
+  </simple>
+</properties>
